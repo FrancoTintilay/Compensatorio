@@ -1,60 +1,99 @@
 package ar.edu.unju.edm.modelo;
 
-public class Usuario {
-	private long dni;
-	private String usuario;
-	private String contraseña;
-	private String nombre;
-	private String apellido;
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.springframework.stereotype.Component;
+@Component
+@Entity
+public class Usuario implements Serializable{
 	
-	public Usuario(long dni, String usuario, String contraseña, String nombre, String apellido) {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO,generator="native")
+	@GenericGenerator(name="native", strategy="native")
+	private Long id;
+	@Column
+	String nombreUsuario;
+	@Column
+	String contraseña;
+	@Column
+	String nombre;
+	@Column
+	String Apellido;
+	@Column
+	int dni;
+	@Column
+	String tipo;
+	public Usuario() {
+		
+	}
+	public Usuario(Long id, String nombreUsuario, String contraseña, String nombre, String apellido, int dni,
+			String tipo) {
 		super();
-		this.dni = dni;
-		this.usuario = usuario;
+		this.id = id;
+		this.nombreUsuario = nombreUsuario;
 		this.contraseña = contraseña;
 		this.nombre = nombre;
-		this.apellido = apellido;
-	}
-
-	public long getDni() {
-		return dni;
-	}
-
-	public void setDni(long dni) {
+		Apellido = apellido;
 		this.dni = dni;
+		this.tipo = tipo;
 	}
-
-	public String getUsuario() {
-		return usuario;
+	public Long getId() {
+		return id;
 	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setId(Long id) {
+		this.id = id;
 	}
-
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
 	public String getContraseña() {
 		return contraseña;
 	}
-
 	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
 	}
-
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 	public String getApellido() {
-		return apellido;
+		return Apellido;
 	}
-
 	public void setApellido(String apellido) {
-		this.apellido = apellido;
+		Apellido = apellido;
 	}
+	public int getDni() {
+		return dni;
+	}
+	public void setDni(int dni) {
+		this.dni = dni;
+	}
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 	
 }
 
